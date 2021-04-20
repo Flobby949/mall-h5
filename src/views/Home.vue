@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <van-button>默认</van-button>
+    <div>你好</div>
   </div>
 </template>
 
@@ -10,3 +9,11 @@ export default {
   name: "Home",
 };
 </script>
+<style lang="less" scoped>
+.home {
+  background: grey;
+  width: 150px;
+  height: 150px;
+  font-size: 18px;
+}
+</style>

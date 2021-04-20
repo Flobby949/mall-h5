@@ -4,9 +4,32 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <transition :name="transitionName">
+      <router-view class="router-view" />
+    </transition>
   </div>
 </template>
+
+
+<script>
+export default {
+  data() {
+    return { transitionName: "slide-left" };
+  },
+  watch: {
+    $route(to, from) {
+      if (to.meta.index > from.meta.index) {
+        this.transitionName = "slide-left";
+      } else if (to.meta.index < from.meta.index) {
+        this.transitionName = "slide-right";
+      } else {
+        this.transitionName = "";
+      }
+    },
+  },
+};
+</script>
+
 
 <style lang="less">
 #app {
@@ -16,17 +39,45 @@
   text-align: center;
   color: #2c3e50;
 }
-
 #nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1000;
+}
+.router-view {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+}
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  height: 100%;
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+  backface-visibility: hidden;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
 </style>
