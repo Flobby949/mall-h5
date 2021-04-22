@@ -2,15 +2,19 @@
   <div class="nav-bar">
     <ul class="nav-list">
       <router-link tag="li" class="nav-list-item active" to="home">
+        <i class="nbicon nblvsefenkaicankaoxianban-1"></i>
         <span>首页</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="category">
+        <i class="nbicon nbfenlei"></i>
         <span>分类</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="cart">
+        <i class="nbicon nbgouwuche"></i>
         <span>购物车</span>
       </router-link>
       <router-link tag="li" class="nav-list-item" to="user">
+        <i class="nbicon nblvsefenkaicankaoxianban-"></i>
         <span>我的</span>
       </router-link>
     </ul>
@@ -18,11 +22,11 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style lang="less" scoped>
-@import "../common/style/mixin";
+@import '../common/style/mixin';
 .nav-bar {
   position: fixed;
   left: 0;
