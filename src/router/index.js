@@ -4,23 +4,51 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    meta: {
-      index: 1
-    }
+const routes = [{
+  path: '/',
+  name: 'home',
+  redirect: 'home',
+},
+{
+  path: '/home',
+  name: 'home',
+  component: Home,
+  meta: {
+    index: 1,
   },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue'),
-    meta: {
-      index: 2
-    }
+},
+{
+  path: '/category',
+  name: 'category',
+  component: () => import('../views/Category.vue'),
+  meta: {
+    index: 1,
+  },
+},
+{
+  path: '/cart',
+  name: 'cart',
+  component: () => import('../views/Cart.vue'),
+  meta: {
+    index: 1,
+  },
+},
+{
+  path: '/user',
+  name: 'user',
+  component: () => import('../views/User.vue'),
+  meta: {
+    index: 1,
+  },
+},
+{
+  path: '/detail',
+  name: 'detail',
+  component: () => import('../views/Detail.vue'),
+  meta: {
+    index: 2
   }
+},
 ]
 
 const router = new VueRouter({

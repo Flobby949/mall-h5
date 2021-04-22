@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <transition :name="transitionName">
       <router-view class="router-view" />
     </transition>
+    <nav-bar v-if="isShowNav"></nav-bar>
   </div>
 </template>
-
-
 <script>
+import navBar from "@/components/NavBar";
 export default {
   data() {
-    return { transitionName: "slide-left" };
+    return {
+      transitionName: "slide-left",
+      isShowNav: true,
+      ShowMenuList: ["/", "/home", "/category", "/cart", "/user"],
+    };
   },
+  components: { navBar },
   watch: {
     $route(to, from) {
+      console.log(to.path);
+      if (this.ShowMenuList.includes(to.path)) {
+        this.isShowNav = true;
+      } else {
+        this.isShowNav = false;
+      }
       if (to.meta.index > from.meta.index) {
         this.transitionName = "slide-left";
       } else if (to.meta.index < from.meta.index) {
