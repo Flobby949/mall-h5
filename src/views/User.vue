@@ -49,7 +49,7 @@ export default {
       if (this.user.loginName != null) {
         this.show = true
       } else {
-        Toast.fail('用户未登录！')
+        Toast.fail('用户未登录!')
       }
     },
     doLogout() {
