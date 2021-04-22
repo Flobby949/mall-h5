@@ -1,8 +1,12 @@
 <template>
   <header class="simple-header">
-    <i class="iconfont icon-fanhui" @click="goBack"></i>
+    <i @click="goBack">
+      <slot name="icon1"></slot>
+    </i>
     <div class="simple-header-title">{{ title }}</div>
-    <i class="iconfont icon-more"></i>
+    <i>
+      <slot name="icon2"></slot>
+    </i>
   </header>
 </template>
 
