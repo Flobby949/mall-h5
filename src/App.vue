@@ -7,39 +7,38 @@
   </div>
 </template>
 <script>
-import navBar from "@/components/NavBar";
+import navBar from '@/components/NavBar'
 export default {
   data() {
     return {
-      transitionName: "slide-left",
+      transitionName: 'slide-left',
       isShowNav: true,
-      ShowMenuList: ["/", "/home", "/category", "/cart", "/user"],
-    };
+      ShowMenuList: ['/', '/home', '/category', '/cart', '/user'],
+    }
   },
   components: { navBar },
   watch: {
     $route(to, from) {
-      console.log(to.path);
       if (this.ShowMenuList.includes(to.path)) {
-        this.isShowNav = true;
+        this.isShowNav = true
       } else {
-        this.isShowNav = false;
+        this.isShowNav = false
       }
       if (to.meta.index > from.meta.index) {
-        this.transitionName = "slide-left";
+        this.transitionName = 'slide-left'
       } else if (to.meta.index < from.meta.index) {
-        this.transitionName = "slide-right";
+        this.transitionName = 'slide-right'
       } else {
-        this.transitionName = "";
+        this.transitionName = ''
       }
     },
   },
-};
+}
 </script>
 
 
 <style lang="less">
-@import "./common/style/mixin";
+@import './common/style/mixin';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
