@@ -58,6 +58,9 @@ export default {
       this.show = false
       this.user = {}
     },
+    goTo(r) {
+      this.$router.push({ path: r })
+    },
   },
 }
 </script>
