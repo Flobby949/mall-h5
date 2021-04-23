@@ -53,10 +53,13 @@ export default {
         id: item.addressId,
         name: item.userName,
         tel: item.userPhone,
-        address: `${item.provinceName}-${item.cityName}-${item.regionName}-${item.detailAddress}`,
+        address: `${item.provinceName}-${item.cityName}-${item.regionName} ${item.detailAddress}`,
         isDefault: !!item.defaultFlag,
       }
     })
+    if (this.list.length == 0) {
+      Toast.fail('暂无地址')
+    }
   },
   methods: {
     onAdd() {
