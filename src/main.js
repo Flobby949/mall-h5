@@ -4,13 +4,15 @@ import router from './router'
 import store from './store'
 import md5 from 'js-md5'
 import {
-  Button, Form, Field, Toast, Grid, GridItem, Icon, Dialog, AddressList, AddressEdit
+  Button, Form, Field, Toast, Grid, GridItem, Icon, Dialog, AddressList, AddressEdit,
+  Swipe, SwipeItem, SwipeCell
 } from 'vant'
 import 'lib-flexible/flexible'
 
 Vue.use(Form).use(Field).use(Toast).use(Button)
   .use(Grid).use(GridItem).use(Icon).use(Dialog)
-  .use(AddressList).use(AddressEdit)
+  .use(AddressList).use(AddressEdit).use(Swipe)
+  .use(SwipeItem).use(SwipeCell)
 Vue.prototype.$md5 = md5
 Vue.config.productionTip = false
 
