@@ -17,3 +17,8 @@ export function getUserInfo() {
 export function logout() {
     return axios.post('/user/logout')
 }
+
+// 编辑用户信息
+export function editUserInfo(params) {
+    return axios.put('/user/info', params)
+}

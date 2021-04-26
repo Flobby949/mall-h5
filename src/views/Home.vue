@@ -20,7 +20,7 @@
     <swiper :list="swiperList"></swiper>
     <!-- 分类栏目 -->
     <div class="category-list">
-      <div v-for="item in categoryList" v-bind:key="item.categoryId">
+      <div v-for="item in categoryList" :key="item.categoryId">
         <img :src="require('../assets/' + item.imgUrl)" />
         <span>{{ item.name }}</span>
       </div>
@@ -149,6 +149,7 @@ export default {
     Toast.loading({
       message: '加载中...',
       forbidClick: true,
+      duration: 1500,
     })
     const { data } = await getHome()
     this.swiperList = data.carousels //轮播图

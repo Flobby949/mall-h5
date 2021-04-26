@@ -73,7 +73,23 @@ const routes = [
     meta: {
       index: 3
     }
-  }
+  },
+  {
+    path: '/setting',
+    name: 'setting',
+    meta: {
+      index: 2
+    },
+    component: () => import(/* webpackChunkName: "setting" */ '../views/Setting.vue'),
+  },
+  {
+    path: '/product-list',
+    name: 'product-list',
+    component: () => import(/* webpackChunkName: "product-list" */ '../views/ProductList.vue'),
+    meta: {
+      index: 2
+    }
+  },
 ]
 
 const router = new VueRouter({
