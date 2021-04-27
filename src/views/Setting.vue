@@ -34,6 +34,8 @@ import sHeader from '@/components/SimpleHeader'
 import { getUserInfo, editUserInfo, logout } from '../service/user'
 import { setLocal } from '@/common/js/utils'
 import { Toast } from 'vant'
+import { getOssClient } from '../utils/client'
+import { renameFile } from '../utils/utils'
 export default {
   name: 'Setting',
   components: {
@@ -56,6 +58,7 @@ export default {
   },
   methods: {
     handleClick() {
+      console.log(this.$refs)
       this.$refs.selectFile.click()
     },
     onChange(e) {
@@ -70,17 +73,13 @@ export default {
       }
     },
     async save() {
-      let OSS = require('ali-oss')
-      let client = new OSS({
-        region: 'oss-cn-shenzhen',
-        accessKeyId: '***',
-        accessKeySecret: '***',
-        bucket: 'flobby',
-      })
       let _this = this
+      let _client = getOssClient()
       async function put() {
         try {
-          let result = await client.put(_this.file.name, _this.file)
+          let fileName = renameFile(_this.file.name)
+          let prefix = _client.options.prefix
+          let result = await _client.put(`${prefix}/${fileName}`, _this.file)
           _this.avatar = result.url
           const params = {
             introduceSign: _this.introduceSign,
