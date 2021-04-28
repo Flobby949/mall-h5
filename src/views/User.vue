@@ -55,6 +55,7 @@ export default {
     doLogout() {
       logout()
       removeLocal('token')
+      removeLocal('userId')
       this.show = false
       this.user = {}
     },
